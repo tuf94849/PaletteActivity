@@ -1,11 +1,13 @@
 package com.example.paletteactivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+
 
 public class PaletteActivity extends AppCompatActivity {
     private boolean firstLaunch = true;
@@ -34,10 +36,16 @@ public class PaletteActivity extends AppCompatActivity {
                 //getWindow().getDecorView().setBackgroundColor(Color.parseColor(colorsArr[position]));
                 //spinner.setBackgroundColor(Color.WHITE);
 
+                String colorPicked = colorsArr[position];
+
                 if(firstLaunch){
                     firstLaunch = false;
                 }
                 else{
+                    Intent startNewActivity = new Intent(PaletteActivity.this, CanvasActivity.class);
+
+                    startNewActivity.putExtra("colorPicked", colorPicked);
+                    startActivity(startNewActivity);
 
                 }
 
