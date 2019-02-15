@@ -11,6 +11,10 @@ public class CanvasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canvas);
 
+        setTitle("Canvas Activity");
+        
+
+
         String selectedColor = (getIntent().getStringExtra("colorPicked"));
         getWindow().getDecorView().setBackgroundColor(Color.parseColor(selectedColor));
     }

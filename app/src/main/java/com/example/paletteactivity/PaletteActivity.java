@@ -19,6 +19,8 @@ public class PaletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("Palette Activity");
+
         final Spinner spinner = findViewById(R.id.spinner);
 
         //must have 10 colors
