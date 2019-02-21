@@ -1,6 +1,7 @@
 package com.example.paletteactivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,10 +27,15 @@ public class PaletteActivity extends AppCompatActivity {
         //must have 10 colors
         //colors like "LTGray" dont work well with parsecolor
         //LTGray must be spelled out as "LightGray
+        /*
         final String[] colorsArr = {"White", "Black", "Blue", "Cyan", "Gray", "Green",
                 "Magenta", "Red", "Yellow", "DarkGray", "LightGray"};
+        */
 
-        ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, colorsArr);
+        Resources res = getResources() ;
+        final String [] gridLabels = res.getStringArray(R.array.colorsArray);
+
+        ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, gridLabels);
 
         spinner.setAdapter(colorAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -38,7 +44,7 @@ public class PaletteActivity extends AppCompatActivity {
                 //getWindow().getDecorView().setBackgroundColor(Color.parseColor(colorsArr[position]));
                 //spinner.setBackgroundColor(Color.WHITE);
 
-                String colorPicked = colorsArr[position];
+                String colorPicked = gridLabels[position];
 
                 if(firstLaunch){
                     firstLaunch = false;
