@@ -12,6 +12,8 @@
         <item>Magenta</item>
         <item>Red</item>
         <item>Yellow</item>
+        <item>DarkGray</item>
+        <item>LightGray</item>
     </string-array>
 
     <string-array
@@ -25,6 +27,8 @@
         <item>Magenta</item>
         <item>Red</item>
         <item>Yellow</item>
+        <item>Dark Gray</item>
+        <item>Light Gray</item>
     </string-array>
 
 

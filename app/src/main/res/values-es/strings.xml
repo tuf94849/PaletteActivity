@@ -13,6 +13,8 @@
         <item>Magenta</item>
         <item>Rojo</item>
         <item>Amarillo</item>
+        <item>Gris Oscuro</item>
+        <item>Gris Claro</item>
 
     </string-array>
 
@@ -27,6 +29,8 @@
         <item>Magenta</item>
         <item>Red</item>
         <item>Yellow</item>
+        <item>DarkGray</item>
+        <item>LightGray</item>
     </string-array>
 
 </resources>
