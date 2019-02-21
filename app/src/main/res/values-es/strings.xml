@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Actividad de la paleta</string>
+
+    <string-array
+        name="colorsArray">
+        <item>Blanco</item>
+        <item>Negro</item>
+        <item>Azul</item>
+        <item>Cian</item>
+        <item>Gris</item>
+        <item>Verde</item>
+        <item>Magenta</item>
+        <item>Rojo</item>
+        <item>Amarillo</item>
+        <item>Grisoscuro</item>
+        <item>Grisclaro</item>
+    </string-array>
+</resources>
