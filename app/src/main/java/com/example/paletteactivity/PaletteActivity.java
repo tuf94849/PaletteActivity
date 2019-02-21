@@ -33,9 +33,10 @@ public class PaletteActivity extends AppCompatActivity {
         */
 
         Resources res = getResources() ;
-        final String [] gridLabels = res.getStringArray(R.array.colorsArray);
+        final String [] EnglishColors = res.getStringArray(R.array.colorsArray);
+        final String [] ESColors = res.getStringArray(R.array.colorsArray2);
 
-        ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, gridLabels);
+        ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, EnglishColors, ESColors);
 
         spinner.setAdapter(colorAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -44,7 +45,7 @@ public class PaletteActivity extends AppCompatActivity {
                 //getWindow().getDecorView().setBackgroundColor(Color.parseColor(colorsArr[position]));
                 //spinner.setBackgroundColor(Color.WHITE);
 
-                String colorPicked = gridLabels[position];
+                String colorPicked = EnglishColors[position];
 
                 if(firstLaunch){
                     firstLaunch = false;

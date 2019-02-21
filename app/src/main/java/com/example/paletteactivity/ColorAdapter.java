@@ -10,11 +10,13 @@ import android.widget.TextView;
 public class ColorAdapter extends BaseAdapter {
     Context c;
     String[] colorsArr;
+    String[] SpinnerDisplay;
 
 
-    public ColorAdapter(Context c, String[] colors){
+    public ColorAdapter(Context c, String[] colors, String[] SpinnerDisplay){
         this.c = c;
         this.colorsArr = colors;
+        this.SpinnerDisplay = SpinnerDisplay;
 
     }
 
@@ -39,6 +41,7 @@ public class ColorAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView tv = new TextView((c));
         tv.setText(colorsArr[position]);
+        tv.setText(SpinnerDisplay[position]);
         //tv.setBackgroundColor(Color.parseColor(colorsArr[position]));
         tv.setBackgroundColor(Color.parseColor("White"));
 
@@ -57,6 +60,7 @@ public class ColorAdapter extends BaseAdapter {
 
         TextView tv = new TextView((c));
         tv.setText(colorsArr[position]);
+        tv.setText(SpinnerDisplay[position]);
         tv.setBackgroundColor(Color.parseColor(colorsArr[position]));
         //tv.setBackgroundColor(Color.parseColor("White"));
 

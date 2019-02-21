@@ -3,7 +3,7 @@
     <string name="app_name">Actividad de la paleta</string>
 
     <string-array
-        name="colorsArray">
+        name="colorsArray2">
         <item>Blanco</item>
         <item>Negro</item>
         <item>Azul</item>
@@ -13,7 +13,20 @@
         <item>Magenta</item>
         <item>Rojo</item>
         <item>Amarillo</item>
-        <item>Gris Oscuro</item>
-        <item>Gris Claro</item>
+
     </string-array>
+
+    <string-array
+        name="colorsArray">
+        <item>White</item>
+        <item>Black</item>
+        <item>Blue</item>
+        <item>Cyan</item>
+        <item>Gray</item>
+        <item>Green</item>
+        <item>Magenta</item>
+        <item>Red</item>
+        <item>Yellow</item>
+    </string-array>
+
 </resources>

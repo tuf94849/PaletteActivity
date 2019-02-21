@@ -12,7 +12,20 @@
         <item>Magenta</item>
         <item>Red</item>
         <item>Yellow</item>
-        <item>DarkGray</item>
-        <item>LightGray</item>
     </string-array>
+
+    <string-array
+        name="colorsArray2">
+        <item>White</item>
+        <item>Black</item>
+        <item>Blue</item>
+        <item>Cyan</item>
+        <item>Gray</item>
+        <item>Green</item>
+        <item>Magenta</item>
+        <item>Red</item>
+        <item>Yellow</item>
+    </string-array>
+
+
 </resources>
