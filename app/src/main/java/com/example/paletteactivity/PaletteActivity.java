@@ -14,7 +14,7 @@ public class PaletteActivity extends AppCompatActivity {
     private boolean firstLaunch = true;
 
     //submit apk file on canvas with github link
-
+    //LOOK INTO CHANGING APPBAR NAME IN SPANISH
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
