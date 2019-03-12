@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">PaletteActivity</string>
 
-    <string-array
-        name="colorsArray">
+    <string-array name="colorsArray">
         <item>White</item>
         <item>Black</item>
         <item>Blue</item>
@@ -16,8 +15,7 @@
         <item>LightGray</item>
     </string-array>
 
-    <string-array
-        name="colorsArray2">
+    <string-array name="colorsArray2">
         <item>White</item>
         <item>Black</item>
         <item>Blue</item>
@@ -30,6 +28,9 @@
         <item>Dark Gray</item>
         <item>Light Gray</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
