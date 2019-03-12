@@ -22,6 +22,14 @@ public class PaletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*PalletteFragment palletteFragment = new PalletteFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(r.id.containter_1, palletteFragment)
+                .addToBackStack(null)
+                .commit();
+                */
+
         setTitle("Palette Activity");
 
         final Spinner spinner = findViewById(R.id.spinner);
@@ -53,10 +61,14 @@ public class PaletteActivity extends AppCompatActivity {
                     firstLaunch = false;
                 }
                 else{
-                    Intent startNewActivity = new Intent(PaletteActivity.this, CanvasActivity.class);
+                    /*Intent startNewActivity = new Intent(PaletteActivity.this, CanvasActivity.class);
 
                     startNewActivity.putExtra("colorPicked", colorPicked);
                     startActivity(startNewActivity);
+                    */
+                    fragmentManager= getSupportFragmentManager();
+
+                   // fragmentManager.beginTransaction().replace(R.id.fragment1, CanvasFragment.newInstance(colorPicked)).addToBackStack(null).commit();
 
                 }
 
@@ -71,5 +83,6 @@ public class PaletteActivity extends AppCompatActivity {
 
             }
         });
+
     }
 }
