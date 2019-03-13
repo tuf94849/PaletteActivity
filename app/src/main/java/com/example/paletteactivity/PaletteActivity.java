@@ -14,7 +14,7 @@ import android.widget.Spinner;
 
 
 public class PaletteActivity extends AppCompatActivity implements PalletteFragment.ColorFragmentInterface {
-    private boolean firstLaunch = true;
+    //private boolean firstLaunch = true;
     CanvasFragment canvasFragment;
 
 
@@ -58,6 +58,7 @@ public class PaletteActivity extends AppCompatActivity implements PalletteFragme
         final String [] EnglishColors = res.getStringArray(R.array.colorsArray);
         final String [] ESColors = res.getStringArray(R.array.colorsArray2);
 
+        //Old ColorAdapter, changed in lab 6
         //ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, EnglishColors, ESColors);
 
 
