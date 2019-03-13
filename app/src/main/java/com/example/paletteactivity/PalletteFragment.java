@@ -76,7 +76,7 @@ public class PalletteFragment extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ((ColorFragmentInterface) c).colorSelected(spinnerColor[position]);
+                ((ColorFragmentInterface) c).colorPicked(spinnerColor[position]);
             }
 
             @Override
@@ -107,7 +107,7 @@ public class PalletteFragment extends Fragment {
     }
 
     interface ColorFragmentInterface {
-        void colorSelected(String color);
+        void colorPicked(String color);
     }
 
 

@@ -2,6 +2,7 @@ package com.example.paletteactivity;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,8 +13,9 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 
 
-public class PaletteActivity extends AppCompatActivity {
+public class PaletteActivity extends AppCompatActivity implements PalletteFragment.ColorFragmentInterface {
     private boolean firstLaunch = true;
+    CanvasFragment canvasFragment;
 
 
 
@@ -24,9 +26,11 @@ public class PaletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         PalletteFragment paletteFragment = new PalletteFragment();
+        canvasFragment = new CanvasFragment();
         addFragment(paletteFragment, R.id.container_1);
-        CanvasFragment canvasFragment = new CanvasFragment();
         addFragment(canvasFragment, R.id.container_2);
 
         //move to its own method to save time
@@ -54,17 +58,10 @@ public class PaletteActivity extends AppCompatActivity {
         final String [] EnglishColors = res.getStringArray(R.array.colorsArray);
         final String [] ESColors = res.getStringArray(R.array.colorsArray2);
 
-        ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, EnglishColors, ESColors);
+        //ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, EnglishColors, ESColors);
 
 
 
-    }
-
-    public void colorSelected(String color) {
-        Bundle bundle = new Bundle();
-        bundle.putString("color", color);
-        CanvasFragment.setArguments(bundle);
-        CanvasFragment.changeColor();
     }
 
     public void addFragment(Fragment fragment, int id){
@@ -73,5 +70,13 @@ public class PaletteActivity extends AppCompatActivity {
                 .add(id, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void colorPicked(String color) {
+        Bundle bundle = new Bundle();
+        bundle.putString("color", color);
+        canvasFragment.setArguments(bundle);
+        canvasFragment.changeColor();
     }
 }
