@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class ColorAdapter extends BaseAdapter {
-    Context c;
+    /*Context c;
     String[] colorsArr;
     String[] SpinnerDisplay;
 
@@ -54,7 +54,7 @@ public class ColorAdapter extends BaseAdapter {
 
     }
 
-*/
+
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
 
@@ -67,5 +67,40 @@ public class ColorAdapter extends BaseAdapter {
 
         return tv;
 
+    }
+    */
+    Context context;
+    //String[] color = new String[]{" ", "red", "yellow", "green", "blue", "gray"}; //added a blank string because I didn't like that main activity switches to second activity when application starts.
+    String[] color;
+
+    public ColorAdapter(Context context, String[] color){
+        this.context = context;
+        this.color = color;
+    }
+
+    @Override
+    public int getCount() {
+        return color.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return color[position];
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final TextView textView = new TextView(context);
+        //textView.findViewById(R.id.spinner);
+        textView.setText(getItem(position).toString());
+        if(!getItem(position).toString().equals(" ")){
+            textView.setBackgroundColor(Color.parseColor(color[position]));
+        }
+        return textView;
     }
 }

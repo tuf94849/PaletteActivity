@@ -3,6 +3,7 @@ package com.example.paletteactivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +14,8 @@ import android.widget.Spinner;
 
 public class PaletteActivity extends AppCompatActivity {
     private boolean firstLaunch = true;
-    FragmentManager fragmentManager;
+
+
 
     //submit apk file on canvas with github link
     //LOOK INTO CHANGING APPBAR NAME IN SPANISH
@@ -22,6 +24,12 @@ public class PaletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PalletteFragment paletteFragment = new PalletteFragment();
+        addFragment(paletteFragment, R.id.container_1);
+        CanvasFragment canvasFragment = new CanvasFragment();
+        addFragment(canvasFragment, R.id.container_2);
+
+        //move to its own method to save time
         /*PalletteFragment palletteFragment = new PalletteFragment();
         getSupportFragmentManager()
                 .beginTransaction()
@@ -32,7 +40,7 @@ public class PaletteActivity extends AppCompatActivity {
 
         setTitle("Palette Activity");
 
-        final Spinner spinner = findViewById(R.id.spinner);
+        //final Spinner spinner = findViewById(R.id.spinner);
 
         //must have 10 colors
         //colors like "LTGray" dont work well with parsecolor
@@ -48,41 +56,22 @@ public class PaletteActivity extends AppCompatActivity {
 
         ColorAdapter colorAdapter = new ColorAdapter(PaletteActivity.this, EnglishColors, ESColors);
 
-        spinner.setAdapter(colorAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //getWindow().getDecorView().setBackgroundColor(Color.parseColor(colorsArr[position]));
-                //spinner.setBackgroundColor(Color.WHITE);
-
-                String colorPicked = EnglishColors[position];
-
-                if(firstLaunch){
-                    firstLaunch = false;
-                }
-                else{
-                    /*Intent startNewActivity = new Intent(PaletteActivity.this, CanvasActivity.class);
-
-                    startNewActivity.putExtra("colorPicked", colorPicked);
-                    startActivity(startNewActivity);
-                    */
-                    fragmentManager= getSupportFragmentManager();
-
-                   // fragmentManager.beginTransaction().replace(R.id.fragment1, CanvasFragment.newInstance(colorPicked)).addToBackStack(null).commit();
-
-                }
 
 
+    }
 
-            }
+    public void colorSelected(String color) {
+        Bundle bundle = new Bundle();
+        bundle.putString("color", color);
+        CanvasFragment.setArguments(bundle);
+        CanvasFragment.changeColor();
+    }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-
-
-            }
-        });
-
+    public void addFragment(Fragment fragment, int id){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(id, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

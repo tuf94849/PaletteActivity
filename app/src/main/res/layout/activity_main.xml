@@ -5,37 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PaletteActivity">
-
-    <fragment
-        android:id="@+id/fragment1"
-        android:name="com.example.paletteactivity.PalletteFragment"
-        android:layout_width="413dp"
-        android:layout_height="364dp"
-        android:layout_marginBottom="367dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="390dp"
-        android:layout_height="wrap_content"
+    <FrameLayout
+        android:id="@+id/container_1"
+        android:layout_width="395dp"
+        android:layout_height="343dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.paletteactivity.CanvasFragment"
-        android:layout_width="410dp"
-        android:layout_height="376dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.015">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/container_2"
+        android:layout_width="395dp"
+        android:layout_height="374dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/container_1"
+        app:layout_constraintVertical_bias="1.0">
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

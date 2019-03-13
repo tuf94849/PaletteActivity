@@ -18,70 +18,96 @@ import android.widget.Spinner;
  */
 public class PalletteFragment extends Fragment {
 
-    //use framelayout to hold fragments
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
-    Context c;
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+
+    private ColorFragmentInterface mListener;
 
     public PalletteFragment() {
         // Required empty public constructor
     }
 
-    private boolean firstLaunch = true;
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment PaletteFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static PalletteFragment newInstance(String param1, String param2) {
+        PalletteFragment fragment = new PalletteFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+    Context c;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_pallette, container, false);
-        final Spinner spinner = v.findViewById(R.id.spinner);
+        View view = inflater.inflate(R.layout.fragment_pallette, container, false);
 
 
-        //must have 10 colors
-        //colors like "LTGray" dont work well with parsecolor
-        //LTGray must be spelled out as "LightGray
-        /*
-        final String[] colorsArr = {"White", "Black", "Blue", "Cyan", "Gray", "Green",
-                "Magenta", "Red", "Yellow", "DarkGray", "LightGray"};
-        */
+        Spinner spinner = view.findViewById(R.id.spinner);
+        Resources res = getResources();
+        final String[] spinnerColor = res.getStringArray(R.array.colorsArray);
+        spinner.setAdapter(new ColorAdapter(c, spinnerColor));
 
-        Resources res = getResources() ;
-        final String [] EnglishColors = res.getStringArray(R.array.colorsArray);
-        final String [] ESColors = res.getStringArray(R.array.colorsArray2);
-
-        ColorAdapter colorAdapter = new ColorAdapter(c, EnglishColors, ESColors);
-
-        spinner.setAdapter(colorAdapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //getWindow().getDecorView().setBackgroundColor(Color.parseColor(colorsArr[position]));
-                //spinner.setBackgroundColor(Color.WHITE);
-
-                String colorPicked = EnglishColors[position];
-
-                if(firstLaunch){
-                    firstLaunch = false;
-                }
-                else{
-                    /*Intent startNewActivity = new Intent(PaletteActivity.this, CanvasActivity.class);
-
-                    startNewActivity.putExtra("colorPicked", colorPicked);
-                    startActivity(startNewActivity);
-                    */
-
-                }
-
-
-
+                ((ColorFragmentInterface) c).colorSelected(spinnerColor[position]);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-
-
             }
         });
-        return v;
+
+        return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ColorFragmentInterface) {
+            mListener = (ColorFragmentInterface) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement ColorFragmentInterface");
+        }
+        this.c = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+    interface ColorFragmentInterface {
+        void colorSelected(String color);
     }
 
 
